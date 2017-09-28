@@ -147,6 +147,15 @@ base_token\t\t#{token}
 admin_mail\t\t#{admin_mail}
 admin_password\t\t#{admin_pass}"
 end
+create_file '.frontend.env'
+append_to_file '.frontend.env' do
+"CLIENT_ID=#{uid}
+CLIENT_SECRET=#{secret}
+APP_TOKEN=#{token}
+API_URL=http://localhost:3100/v1/
+CLIENT_GRANT_TYPE=client_credentials
+CABLE_URL=http://localhost:3100/cable"
+end
 
 # MIGRATE AND SEED DATABASE
 rake "db:migrate db:seed"
