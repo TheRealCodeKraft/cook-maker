@@ -1,0 +1,29 @@
+#!/bin/bash
+
+SOURCE=${BASH_SOURCE[0]}
+local_dir="$( dirname $SOURCE)"
+
+while getopts a:d: option
+do
+ case "${option}"
+ in
+ a) app_name=${OPTARG};;
+ d) destination=${OPTARG};;
+ esac
+done
+
+if [ -z "$app_name" ]; then
+  echo "Missing app-name"
+  exit 0
+fi
+
+echo " > Creating database $app_name"
+sudo -u postgres psql -c "CREATE USER $app_name WITH PASSWORD '$app_name';" > /dev/null 2>&1
+sudo -u postgres psql -c "CREATE DATABASE $app_name;" > /dev/null 2>&1
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $app_name TO $app_name;" > /dev/null 2>&1
+echo " > Database accessible from command line with : sudo -u postgres psql postgresql://$app_name:$app_name@localhost/$app_name"
+
+rails new $app_name -m $local_dir/app_template.rb 
+
+cd $app_name
+rails s -b 0.0.0.0
