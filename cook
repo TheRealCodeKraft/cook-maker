@@ -1,0 +1,124 @@
+#!/bin/bash
+
+SOURCE=${BASH_SOURCE[0]}
+local_dir="$( dirname $SOURCE)"
+
+while getopts a:d:r:v: option
+do
+ case "${option}"
+ in
+ a) app_name=${OPTARG};;
+ d) description=${OPTARG};;
+ r) repo=${OPTARG};;
+ v) lib_version=${OPTARG};;
+ esac
+done
+spinnerOn="off"
+spinner() {
+  local i sp n
+  sp='/-\|'
+  n=${#sp}
+  printf ' '
+  while sleep 0.1; do
+    #if [ "on" == "$spinnerOn" ]; then
+      printf "%s\b" "${sp:i++%n:1}"
+    #fi
+  done
+}
+
+spinnerOn() {
+  tput civis
+  spinnerOn="on"
+}
+spinnerOff() {
+  #spinnerOn="off"
+  kill "$!" > /dev/null 2>&1 # kill the spinner
+  tput cnorm
+}
+
+ctrl_c() {
+  spinnerOff & 
+  printf '\033[?12l'
+  tput cnorm
+  exit 0
+}
+
+title() {
+  printf '\033[?12l'
+  printf "\033c"
+  echo -n $'\E[33m'
+  cat << "EOF"
+                 ____          _      _  __           __ _   
+    .-""""-.    / ___|___   __| | ___| |/ /_ __ __ _ / _| |_ 
+   /' .  '. \  | |   / _ \ / _` |/ _ \ ' /| '__/ _` | |_| __|
+  (`-..:...-') | |__| (_) | (_| |  __/ . \| | | (_| |  _| |_ 
+   ;-......-;   \____\___/ \__,_|\___|_|\_\_|  \__,_|_|  \__|
+    '------'  
+EOF
+  echo -n $'\E[39m'
+  echo -e ""
+}
+
+trap ctrl_c INT
+
+spinner &
+title
+
+echo -n $'\E[39m'
+
+if [ -z "$app_name" ]; then
+  echo -n "    > Application name : "
+  read app_name
+fi
+
+if [ -z "$description" ]; then
+  echo -n "    > Give us a description : "
+  read description
+fi
+if [ -z "$description" ]; then
+  description='Default description for '$app_name' project'
+fi
+if [ -z "$lib_version" ]; then
+  echo "Missing frontend library version"
+  exit 0
+fi
+
+if [ -z "$repo" ]; then
+  repo="https://github.com/TheRealCodeKraft"
+fi
+
+title
+
+#spinnerOn
+printf '  Generating '$'\E[32m'$app_name$'\E[39m\n\n'
+printf '    > Building API '
+
+mkdir $app_name
+cd $app_name
+
+.$local_dir/ruby-api/create -a $app_name > .api_build
+mv "$app_name" api
+
+spinnerOff 
+
+title
+
+#spinnerOn
+spinner &
+printf '  Generating '$'\E[32m'$app_name$'\E[39m\n\n'
+printf '    > API'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Building Frontend '
+
+.$local_dir/react-frontend/create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version > .frontend_build
+mv "$app_name" frontend
+
+sleep 10
+spinnerOff
+
+title
+
+printf '  Generating '$'\E[38m '$app_name$'\E[39m\n'
+printf '    > API'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Frontend'$'\E[32m'' Built!'$'\E[39m'
+
+printf '\n\n'

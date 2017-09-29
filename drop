@@ -1,0 +1,19 @@
+#!/bin/bash
+
+while getopts a:d: option
+do
+ case "${option}"
+ in
+ a) app_name=${OPTARG};;
+ d) destination=${OPTARG};;
+ esac
+done
+
+if [ -z "$app_name" ]; then
+  echo "Missing app name"
+  exit 0
+fi
+
+sudo -u postgres psql -c "DROP DATABASE $app_name;"
+sudo -u postgres psql -c "DROP USER $app_name;"
+rm -Rf $app_name
