@@ -46,7 +46,7 @@ ctrl_c() {
 title() {
   printf '\033[?12l'
   printf "\033c"
-  echo -n $'\E[33m'
+  echo -n $'\E[91m'
   cat << "EOF"
                  ____          _      _  __           __ _   
     .-""""-.    / ___|___   __| | ___| |/ /_ __ __ _ / _| |_ 
@@ -100,6 +100,7 @@ cd $app_name
 mv "$app_name" api
 
 spinnerOff 
+#exit 1
 
 title
 
@@ -112,13 +113,32 @@ printf '    > Building Frontend '
 .$local_dir/react-frontend/create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version > .frontend_build
 mv "$app_name" frontend
 
-sleep 10
+spinnerOff
+
+title
+
+spinner &
+printf '  Generating '$'\E[38m '$app_name$'\E[39m\n'
+printf '    > API'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Frontend'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Building common scripts '
+
+cp .$local_dir/common/tmux.yaml .tmux.yaml
+sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" .tmux.yaml
+cp .$local_dir/common/launch .
+cp .$local_dir/common/mailcatcher .
+
 spinnerOff
 
 title
 
 printf '  Generating '$'\E[38m '$app_name$'\E[39m\n'
 printf '    > API'$'\E[32m'' Built!'$'\E[39m\n'
-printf '    > Frontend'$'\E[32m'' Built!'$'\E[39m'
+printf '    > Frontend'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Common scripts'$'\E[32m'' Built!'$'\E[39m'
+printf '\n\n'
+
+printf "    Yay! "$'\E[32m'"$app_name"$'\E[39m'' ready to launch !\n'
+printf "    Launch it with : "$'\E[91m'"cd $app_name; ./launch"$'\E[39m'
 
 printf '\n\n'

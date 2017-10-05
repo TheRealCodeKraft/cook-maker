@@ -1,0 +1,21 @@
+session_name: [[APP_NAME]]
+windows:
+- window_name: dev window
+  layout: tiled
+  panes:
+    - shell_command:
+      - cd api
+      - rails s -b 0.0.0.0
+    - shell_command:
+      - cd frontend
+      - npm run client:dev        
+    - shell_command:
+      - cd api
+      - vim .
+    - shell_command:
+      - cd frontend
+      - vim .
+    - shell_command:
+      - cd api
+    - shell_command:
+      - cd frontend

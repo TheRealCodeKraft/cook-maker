@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width">
+    <title>[[APP_NAME]]</title>
+    <style type="text/css">
+      @media only screen and (max-width: 800px){
+        td[class="fullhide"]{display: block !important;width:auto !important;max-height:inherit !important;overflow:visible !important; float:none !important;}
+        table[class="w800"]{width:320px !important; } 
+        td[class="desktop"], img[class="desktop"], br[class="desktop"]{display: none !important;}
+        td[class="mobile"], img[class="mobile"], br[class="mobile"], td[class="block"]{display: block !important;}
+        td[class="h20"] img{height: 10px !important;}
+        td[class="h30"] img{height: 20px !important;}
+        td[class="h40"] img{height: 30px !important;}
+        td[class="w20"]{width: 10px !important;}
+      }
+    </style>
+  </head>
+  <body style="margin:0; padding:10px; background-color:#F5F5F5">
+    <table width="800" border="0" cellspacing="0" cellpadding="0" align="center" class="w800"  bgcolor="#F5F5F5">
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif; font-size:12px;" bgcolor="#e8e8e8">
+          <a href="https://playground.openbusinesslabs.com" target="_blank">
+            [[APP_NAME]]
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-family:Arial,Helvetica,sans-serif; font-size:12px;">
+          <table width="800" border="0" cellspacing="0" cellpadding="0" align="center" class="w800">
+            <tr>
+              <td style="padding:16px; background:#FFFFFF;">
+                <div style="text-align: right;">
+                  <span>le <%= DateTime.now.strftime("%d/%m/%Y") %></span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <!--<img src="img/img-cut.png" alt="" style="display:block; border:0; width:100%;" />-->
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="800" border="0" cellspacing="0" cellpadding="0" align="center" class="w800">
+            <tr>
+              <td>
+                <%= image_tag "https://media.openbusinesslabs.com/mails/spacer.gif", width: "44", height: "100%", style: "display: block" %>
+              </td>
+              <td style="font-family:Arial,Helvetica,sans-serif; font-size:16px; color:#87919b; padding-top: 10px;">
+                Bonjour<%= (not @user.firstname.nil?) ? " \#{@user.firstname}" : "" %>,
+                <%= yield %>
+                <p>
+                  
+                </p>
+                <p>
+                  <br />
+                  A bientôt sur [[APP_NAME]],
+                  <br />
+                </p>
+              </td>
+              <td>
+                <%= image_tag "https://media.openbusinesslabs.com/mails/spacer.gif", width: "30", height: "100%", style: "display: block;" %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="800" border="0" cellspacing="0" cellpadding="0" align="center" class="w800" bgcolor="#232d37">
+            <tr>
+              <td>
+                <%= image_tag "https://media.openbusinesslabs.com/mails/spacer.gif", width: "8", height: "44", style: "display: block;" %>
+              </td>
+              <td align="left" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#FFFFFF;">
+                [[APP_NAME]]
+              </td>
+              <td align="right" style="font-family: Arial, Helvetica, sans-serif;font-size:12px;">
+                <%#<a href="mailto:contact@partnurse.com" target="_blank" style="color:#FFFFFF">Nous contacter</a>#%>
+              </td>
+              <td>
+                <%= image_tag "https://media.openbusinesslabs.com/mails/spacer.gif", width: "8", height: "44", style: "display: block;" %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="800" border="0" cellspacing="0" cellpadding="0" align="center" class="w800" bgcolor="#f6f6f6">
+            <tr>
+              <td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#FFFFFF;padding:8px;" align="center" bgcolor="#0f1923">
+                <%#
+                  Pour ne plus recevoir de messages de notre part, il vous suffit de <a href="/" target="_blank" style="color:#FFFFFF">cliquer ici</a>.
+                  #%>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

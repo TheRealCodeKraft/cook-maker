@@ -53,10 +53,10 @@ set_in_package "LIB_VERSION" "$lib_version"
 # PREPARE DOTENV FILE
 echo $env_file_path
 if ! [ -z "$env_file_path" ]; then
-echo "AH"
   cp $env_file_path $app_name/.env
 fi
 
 cd $app_name
-npm install --loglevel=warn
+npm set progress=false && npm install --silent
+npm set progress=true
 cd ..
