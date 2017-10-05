@@ -30,6 +30,8 @@ end
 gem 'codekraft-api', git: 'https://github.com/TheRealCodeKraft/codekraft-ruby-api', branch: 'master'"
 end
 
+run "bundle install"
+
 # COPY CONFIG FILES
 remove_file "config/application.rb"
 remove_file 'config/database.yml'
