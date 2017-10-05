@@ -57,6 +57,9 @@ if ! [ -z "$env_file_path" ]; then
 fi
 
 cd $app_name
-npm set progress=false && npm install --silent
-npm set progress=true
+#npm set progress=false && npm install --silent
+#npm set progress=true
+npm install
+rm node_modules
+npm install
 cd ..

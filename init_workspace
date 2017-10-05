@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# INSTALL GIT
-sudo apt-get update
-sudo apt-get install git
-
-# INSTALL COMMON PACKAGES
-sudo apt-get install curl
 sudo apt-get install gnupg2
 
 # INSTALL RUBY
@@ -29,6 +23,9 @@ gem update --system
 rvm gemset use global
 gem update
 echo "gem: --no-document" >> ~/.gemrc
+
+# /!\ RELOAD !!
+
 gem install bundler
 gem install nokogiri
 gem install rails
@@ -37,5 +34,11 @@ gem install rails
 sudo apt-get install postgresql postgresql-contrib libpq-dev
 gem install pg -v '0.21.0'
 
-git clone git@github.com:TheRealCodeKraft/cook-maker
-./cook-maker -a example -d "A skeleton app from codekraft cook maker" -v 0.0.31
+sudo apt-get install python-pip
+sudo apt-get install tmux
+pip install --user tmuxp
+
+gem install mailcatcher
+
+#git clone git@github.com:TheRealCodeKraft/cook-maker
+#./cook-maker -a example -d "A skeleton app from codekraft cook maker" -v 0.0.31
