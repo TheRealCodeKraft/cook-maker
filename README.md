@@ -1,8 +1,11 @@
 **INSTALL**
 
 sudo apt-get update
+
 sudo apt-get install git curl
+
 git clone git@github.com:TheRealCodeKraft/cook-maker
+
 ./cook-maker/init_workspace
 
 **LAUNCH**
