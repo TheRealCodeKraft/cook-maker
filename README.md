@@ -12,17 +12,19 @@
     ./cook-maker/init_workspace
 
 ## CREATE A SKELETON APPLICATION**
-
-./cook-maker/cook-example
-
+    
+    # Cook an application named example
+    ./cook-maker/cook-example
 OR
 
-./cook-maker/cook -a <app_name> -d "<app_description>" -v <client_lib_version>
+    # Cook an application with your preferences
+    ./cook-maker/cook -a <app_name> -d "<app_description>" -v <client_lib_version>
 
 ## DROP AN APPLICATION
 
-./cook-maker/drop-example
-
+    # Drop the application named example
+    ./cook-maker/drop-example
 OR
 
-./cook-maker/drop -a <app_name>
+    # Drop the application named with the parameter
+    ./cook-maker/drop -a <app_name>
