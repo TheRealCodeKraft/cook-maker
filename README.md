@@ -5,7 +5,7 @@
     # update system
     sudo apt-get update
     # install minimal dependencies
-    sudo apt-get install git curl
+    sudo apt-get -y install git curl
     # clone cook-maker
     git clone git@github.com:TheRealCodeKraft/cook-maker
     # init environment
