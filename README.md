@@ -9,7 +9,7 @@
     # clone cook-maker
     git clone git@github.com:TheRealCodeKraft/cook-maker
     # init environment
-    ./cook-maker/init_workspace
+    ./cook-maker/preheat
 
 ## CREATE A SKELETON APPLICATION**
     
