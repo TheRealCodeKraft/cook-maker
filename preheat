@@ -1,0 +1,112 @@
+#!/bin/bash
+
+spinner() {
+  local i sp n
+  sp='/-\|'
+  n=${#sp}
+  printf ' '
+  while sleep 0.1; do
+    printf "%s\b" "${sp:i++%n:1}"
+  done
+}
+
+spinnerOn() {
+  tput civis
+}
+spinnerOff() {
+  kill "$!" > /dev/null 2>&1 # kill the spinner
+  tput cnorm
+}
+
+ctrl_c() {
+  spinnerOff & 
+  printf '\033[?12l'
+  tput cnorm
+  exit 0
+}
+
+title() {
+  spinnerOff 
+  printf '\033[?12l'
+  printf "\033c"
+  echo -n $'\E[91m'
+  cat << "EOF"
+                 ____          _      _  __           __ _   
+    .-""""-.    / ___|___   __| | ___| |/ /_ __ __ _ / _| |_ 
+   /' .  '. \  | |   / _ \ / _` |/ _ \ ' /| '__/ _` | |_| __|
+  (`-..:...-') | |__| (_) | (_| |  __/ . \| | | (_| |  _| |_ 
+   ;-......-;   \____\___/ \__,_|\___|_|\_\_|  \__,_|_|  \__|
+    '------'  
+EOF
+  echo -n $'\E[39m'
+  echo -e ""
+  spinner &
+}
+
+trap ctrl_c INT
+
+echo -n $'\E[39m'
+
+title
+printf '  Initializing workspace\n\n'
+printf '    > Dependencies '
+
+sudo apt-get -y install gnupg2 postgresql postgresql-contrib libpq-dev python-pip tmux > .codekraft_init
+
+title
+printf '  Initializing workspace\n\n'
+printf '    > Dependencies'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Ruby '
+
+curl -sSL https://rvm.io/mpapis.asc | gpg2 -q --import --batch --no-tty - > .codekraft_init
+curl -sSL https://get.rvm.io | bash -s stable --ruby > .codekraft_init
+rvm get stable --autolibs=enable > .codekraft_init
+rvm install "ruby-2.4.2" > .codekraft_init
+rvm --default use ruby-2.4.2 > .codekraft_init
+
+title
+printf '  Initializing workspace\n\n'
+printf '    > Dependencies'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Ruby'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > NodeJS '
+
+sudo curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n > .codekraft_init
+sudo chmod +x /usr/local/bin/n > .codekraft_init
+sudo n stable > .codekraft_init
+
+source ~/.profile > .codekraft_init
+
+title
+printf '  Initializing workspace\n\n'
+printf '    > Dependencies'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Ruby'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > NodeJS'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Rails '
+
+gem update --system > .codekraft_init
+rvm gemset use global > .codekraft_init
+gem update > .codekraft_init
+echo "gem: --no-document" >> ~/.gemrc > .codekraft_init
+# /!\ RELOAD !!
+gem install bundler > .codekraft_init
+gem install nokogiri > .codekraft_init
+gem install rails > .codekraft_init
+# INSTALL POSTGRESQL
+gem install pg -v '0.21.0' > .codekraft_init
+pip install --user tmuxp > .codekraft_init
+gem install mailcatcher > .codekraft_init
+
+title
+printf '  Initializing workspace\n\n'
+printf '    > Dependencies'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Ruby'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > NodeJS'$'\E[32m'' Built!'$'\E[39m\n'
+printf '    > Rails'$'\E[32m'' Built!'$'\E[39m\n\n'
+
+printf "    Yay! Workspace initialized !\n"
+
+printf '\n\n'
+spinnerOff 
+
+#git clone git@github.com:TheRealCodeKraft/cook-maker
+#./cook-maker -a example -d "A skeleton app from codekraft cook maker" -v 0.0.31

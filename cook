@@ -13,25 +13,20 @@ do
  v) lib_version=${OPTARG};;
  esac
 done
-spinnerOn="off"
 spinner() {
   local i sp n
   sp='/-\|'
   n=${#sp}
   printf ' '
   while sleep 0.1; do
-    #if [ "on" == "$spinnerOn" ]; then
-      printf "%s\b" "${sp:i++%n:1}"
-    #fi
+    printf "%s\b" "${sp:i++%n:1}"
   done
 }
 
 spinnerOn() {
   tput civis
-  spinnerOn="on"
 }
 spinnerOff() {
-  #spinnerOn="off"
   kill "$!" > /dev/null 2>&1 # kill the spinner
   tput cnorm
 }
@@ -89,7 +84,6 @@ fi
 
 title
 
-#spinnerOn
 printf '  Generating '$'\E[32m'$app_name$'\E[39m\n\n'
 printf '    > Building API '
 
@@ -104,7 +98,6 @@ spinnerOff
 
 title
 
-#spinnerOn
 spinner &
 printf '  Generating '$'\E[32m'$app_name$'\E[39m\n\n'
 printf '    > API'$'\E[32m'' Built!'$'\E[39m\n'
