@@ -13,7 +13,7 @@
 
 ## CREATE A SKELETON APPLICATION**
     
-    # Cook an application named example
+    # Cook an application named *example*
     ./cook-maker/cook-example
 OR
 
@@ -22,7 +22,7 @@ OR
 
 ## DROP AN APPLICATION
 
-    # Drop the application named example
+    # Drop the application named *example*
     ./cook-maker/drop-example
 OR
 
