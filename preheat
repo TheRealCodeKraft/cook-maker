@@ -51,7 +51,7 @@ title
 printf '  Initializing workspace\n\n'
 printf '    > Dependencies '
 
-sudo apt-get -y install gnupg2 postgresql postgresql-contrib libpq-dev python-pip tmux > .codekraft_init
+sudo apt-get -y install gnupg2 postgresql postgresql-contrib libpq-dev python-dev python-pip tmux > .codekraft_init
 
 title
 printf '  Initializing workspace\n\n'

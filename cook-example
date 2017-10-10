@@ -3,4 +3,4 @@
 SOURCE=${BASH_SOURCE[0]}
 local_dir="$( dirname $SOURCE)"
 
-.$local_dir/cook -a example -d "A skeleton app from codekraft cook maker" -v 1.0.33
+$local_dir/cook -a example -d "A skeleton app from codekraft cook maker" -v 1.0.33
