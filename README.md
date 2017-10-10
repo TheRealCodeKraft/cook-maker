@@ -13,11 +13,17 @@
     ./cook-maker/preheat
     
 ### VAGRANT
-First, download the Vagrantfile located at : 
+First, download the Vagrantfile located at : [VagrantFile](https://raw.githubusercontent.com/TheRealCodeKraft/cook-maker/master/vagrant/Vagrantfile)
+
 Place it in the chosen directory and then launch :
 
     # Launching vagramt machine
     vagrant up
+    
+Wait for installation (it take time !) and then go in box
+
+    # Connecting to box
+    vssh
 
 ## CREATE A SKELETON APPLICATION**
     
