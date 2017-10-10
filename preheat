@@ -58,11 +58,11 @@ printf '  Initializing workspace\n\n'
 printf '    > Dependencies'$'\E[32m'' Built!'$'\E[39m\n'
 printf '    > Ruby '
 
-curl -sSL https://rvm.io/mpapis.asc | gpg2 -q --import --batch --no-tty - > .codekraft_init
-curl -sSL https://get.rvm.io | bash -s stable --ruby > .codekraft_init
-rvm get stable --autolibs=enable > .codekraft_init
-rvm install "ruby-2.4.2" > .codekraft_init
-rvm --default use ruby-2.4.2 > .codekraft_init
+curl -sSL https://rvm.io/mpapis.asc | gpg2 -q --import --batch --no-tty - >> .codekraft_init
+curl -sSL https://get.rvm.io | bash -s stable --ruby >> .codekraft_init
+rvm get stable --autolibs=enable >> .codekraft_init
+rvm install "ruby-2.4.2" >> .codekraft_init
+rvm --default use ruby-2.4.2 >> .codekraft_init
 
 title
 printf '  Initializing workspace\n\n'
@@ -70,9 +70,9 @@ printf '    > Dependencies'$'\E[32m'' Built!'$'\E[39m\n'
 printf '    > Ruby'$'\E[32m'' Built!'$'\E[39m\n'
 printf '    > NodeJS '
 
-sudo curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n > .codekraft_init
-sudo chmod +x /usr/local/bin/n > .codekraft_init
-sudo n stable > .codekraft_init
+sudo curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n >> .codekraft_init
+sudo chmod +x /usr/local/bin/n >> .codekraft_init
+sudo n stable >> .codekraft_init
 
 title
 printf '  Initializing workspace\n\n'
@@ -81,20 +81,18 @@ printf '    > Ruby'$'\E[32m'' Built!'$'\E[39m\n'
 printf '    > NodeJS'$'\E[32m'' Built!'$'\E[39m\n'
 printf '    > Rails '
 
-gem update --system > .codekraft_init
-rvm gemset use global > .codekraft_init
-gem update > .codekraft_init
-echo "gem: --no-document" >> ~/.gemrc > .codekraft_init
-# /!\ RELOAD !!
-gem install bundler > .codekraft_init
-gem install nokogiri > .codekraft_init
-gem install rails > .codekraft_init
-# INSTALL POSTGRESQL
-gem install pg -v '0.21.0' > .codekraft_init
-pip install --user tmuxp > .codekraft_init
-gem install mailcatcher > .codekraft_init
+gem update --system >> .codekraft_init
+rvm gemset use global >> .codekraft_init
+gem update >> .codekraft_init
+echo "gem: --no-document" >> ~/.gemrc
+gem install bundler >> .codekraft_init
+gem install nokogiri >> .codekraft_init
+gem install pg -v '0.21.0' >> .codekraft_init
+gem install mailcatcher >> .codekraft_init
+gem install rails >> .codekraft_init
 
-source ~/.profile > .codekraft_init
+pip install --user tmuxp >> .codekraft_init
+source ~/.profile >> .codekraft_init
 
 title
 printf '  Initializing workspace\n\n'
