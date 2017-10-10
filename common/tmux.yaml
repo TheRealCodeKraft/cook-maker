@@ -1,4 +1,4 @@
-session_name: [[APP_NAME]]
+session_name: "meuh"
 windows:
 - window_name: dev window
   layout: tiled
@@ -9,13 +9,3 @@ windows:
     - shell_command:
       - cd frontend
       - npm run client:dev        
-    - shell_command:
-      - cd api
-      - vim .
-    - shell_command:
-      - cd frontend
-      - vim .
-    - shell_command:
-      - cd api
-    - shell_command:
-      - cd frontend

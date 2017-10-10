@@ -59,7 +59,7 @@ fi
 cd $app_name
 npm set progress=false
 npm install --silent
-rm node_modules
+rm -Rf node_modules
 npm install --silent
 npm set progress=true
 cd ..

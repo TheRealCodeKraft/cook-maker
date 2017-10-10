@@ -74,8 +74,6 @@ sudo curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/
 sudo chmod +x /usr/local/bin/n > .codekraft_init
 sudo n stable > .codekraft_init
 
-source ~/.profile > .codekraft_init
-
 title
 printf '  Initializing workspace\n\n'
 printf '    > Dependencies'$'\E[32m'' Built!'$'\E[39m\n'
@@ -95,6 +93,8 @@ gem install rails > .codekraft_init
 gem install pg -v '0.21.0' > .codekraft_init
 pip install --user tmuxp > .codekraft_init
 gem install mailcatcher > .codekraft_init
+
+source ~/.profile > .codekraft_init
 
 title
 printf '  Initializing workspace\n\n'
