@@ -1,5 +1,7 @@
 # CODEKRAFT COOK MAKER
 
+CodeKraft Cook-maker is a full ruby/react stack to provide an easy to install dev environment. It provides an Ruby/Rails/Grape based API and a full React Client. 
+
 ## INSTALL
 
 ### HANDMADE
