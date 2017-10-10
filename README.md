@@ -2,6 +2,7 @@
 
 ## INSTALL
 
+### HANDMADE
     # update system
     sudo apt-get update
     # install minimal dependencies
@@ -10,6 +11,13 @@
     git clone git@github.com:TheRealCodeKraft/cook-maker
     # init environment
     ./cook-maker/preheat
+    
+### VAGRANT
+First, download the Vagrantfile located at : 
+Place it in the chosen directory and then launch :
+
+    # Launching vagramt machine
+    vagrant up
 
 ## CREATE A SKELETON APPLICATION**
     
