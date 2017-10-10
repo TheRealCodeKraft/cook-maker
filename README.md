@@ -15,6 +15,9 @@
 ### VAGRANT
 First, download the Vagrantfile located at : [VagrantFile](https://raw.githubusercontent.com/TheRealCodeKraft/cook-maker/master/vagrant/Vagrantfile)
 
+    # Download Vagrantfile
+    wget https://raw.githubusercontent.com/TheRealCodeKraft/cook-maker/master/vagrant/Vagrantfile
+
 Place it in the chosen directory and then launch :
 
     # Launching vagramt machine
