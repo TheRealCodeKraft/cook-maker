@@ -81,9 +81,9 @@ printf '    > Ruby'$'\E[32m'' Built!'$'\E[39m\n'
 printf '    > NodeJS'$'\E[32m'' Built!'$'\E[39m\n'
 printf '    > Rails '
 
-gem update --system >> .codekraft_init
+source ~/.profile >> .codekraft_init
 rvm gemset use global >> .codekraft_init
-gem update >> .codekraft_init
+
 echo "gem: --no-document" >> ~/.gemrc
 gem install bundler >> .codekraft_init
 gem install nokogiri >> .codekraft_init
@@ -92,7 +92,6 @@ gem install mailcatcher >> .codekraft_init
 gem install rails >> .codekraft_init
 
 pip install --user tmuxp >> .codekraft_init
-source ~/.profile >> .codekraft_init
 
 title
 printf '  Initializing workspace\n\n'
