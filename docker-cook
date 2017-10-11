@@ -39,8 +39,8 @@ fi
 
 mkdir $app_name
 cd $app_name
-echo $local_dir/ruby-api/app_template.rb
-rails new $app_name -m $local_dir/ruby-api/app_template.rb 
+echo ../$local_dir/ruby-api/app_template.rb
+rails new $app_name -m ../$local_dir/ruby-api/app_template.rb 
 mv "$app_name" api
 
 .$local_dir/react-frontend/create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version
