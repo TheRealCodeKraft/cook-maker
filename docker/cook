@@ -1,0 +1,50 @@
+#!/bin/bash
+
+SOURCE=${BASH_SOURCE[0]}
+local_dir="$( dirname $SOURCE)"
+
+while getopts a:d:r:v: option
+do
+ case "${option}"
+ in
+ a) app_name=${OPTARG};;
+ d) description=${OPTARG};;
+ r) repo=${OPTARG};;
+ v) lib_version=${OPTARG};;
+ esac
+done
+
+if [ -z "$app_name" ]; then
+  echo -n "    > Application name : "
+  read app_name
+fi
+
+if [ -z "$description" ]; then
+  echo -n "    > Give us a description : "
+  read description
+fi
+if [ -z "$description" ]; then
+  description='Default description for '$app_name' project'
+fi
+if [ -z "$lib_version" ]; then
+  echo "Missing frontend library version"
+  exit 0
+fi
+
+if [ -z "$repo" ]; then
+  repo="https://github.com/TheRealCodeKraft"
+fi
+
+mkdir $app_name
+cd $app_name
+
+.$local_dir/ruby-api/create -a $app_name > .api_build
+mv "$app_name" api
+
+.$local_dir/react-frontend/create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version > .frontend_build
+mv "$app_name" frontend
+
+cp .$local_dir/common/tmux.yaml .tmux.yaml
+sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" .tmux.yaml
+cp .$local_dir/common/launch .
+cp .$local_dir/common/mailcatcher .
