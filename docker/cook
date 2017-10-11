@@ -38,13 +38,13 @@ fi
 mkdir $app_name
 cd $app_name
 
-.$local_dir/ruby-api/create -a $app_name > .api_build
+.$local_dir/../ruby-api/create -a $app_name > .api_build
 mv "$app_name" api
 
-.$local_dir/react-frontend/create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version > .frontend_build
+.$local_dir/../react-frontend/create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version > .frontend_build
 mv "$app_name" frontend
 
-cp .$local_dir/common/tmux.yaml .tmux.yaml
-sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" .tmux.yaml
-cp .$local_dir/common/launch .
-cp .$local_dir/common/mailcatcher .
+#cp .$local_dir/common/tmux.yaml .tmux.yaml
+#sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" .tmux.yaml
+#cp .$local_dir/common/launch .
+#cp .$local_dir/common/mailcatcher .
