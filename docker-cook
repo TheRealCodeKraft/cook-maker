@@ -37,12 +37,10 @@ if [ -z "$repo" ]; then
   repo="https://github.com/TheRealCodeKraft"
 fi
 
-mkdir $app_name
-cd $app_name
-rails new $app_name -m ../$local_dir/ruby-api/docker-app_template.rb 
+rails new $app_name -m $local_dir/ruby-api/docker-app_template.rb 
 mv "$app_name" api
 
-../$local_dir/react-frontend/docker-create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version
+$local_dir/react-frontend/docker-create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version
 mv "$app_name" frontend
 
 #cp .$local_dir/common/tmux.yaml .tmux.yaml

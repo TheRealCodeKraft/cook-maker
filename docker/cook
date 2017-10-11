@@ -1,9 +1,12 @@
 #!/bin/bash
 
+SOURCE=${BASH_SOURCE[0]}
+local_dir="$( dirname $SOURCE)"
+
 sudo docker build -t cook-maker .
 sudo docker rm cook-maker
 sudo docker run -it -v $(pwd):/build --name cook-maker cook-maker
-sudo cp docker-compose.yml example/
-sudo cp frontend-Dockerfile example/fronted/Dockerfile
-sudo cp api-Dockerfile example/api/Dockerfile
-sudo cp .env example/
+sudo cp $local_dir/docker_compose.yml .
+sudo cp $local_dir/frontend_Dockerfile .
+sudo cp $local_dir/api_Dockerfile api/Dockerfile
+sudo cp $local_dir/.env .
