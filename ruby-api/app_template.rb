@@ -41,7 +41,7 @@ directory "config"
 # CREATING ENV FILE
 create_file '.env'
 append_to_file '.env' do
-  "DATABASE_URL=postgresql://#{@app_name}:#{@app_name}@localhost/#{@app_name}"
+  "DATABASE_URL=postgresql://#{@app_name}:#{@app_name}@postgres/#{@app_name}"
 end
 
 # MANAGING MAILS
@@ -90,9 +90,9 @@ append_to_file '.frontend.env' do
 "CLIENT_ID=#{uid}
 CLIENT_SECRET=#{secret}
 APP_TOKEN=#{token}
-API_URL=http://localhost:3100/v1/
+API_URL=http://localhost:3000/v1/
 CLIENT_GRANT_TYPE=client_credentials
-CABLE_URL=http://localhost:3100/cable"
+CABLE_URL=http://localhost:3000/cable"
 end
 
 # MIGRATE AND SEED DATABASE

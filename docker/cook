@@ -3,3 +3,7 @@
 sudo docker build -t cook-maker .
 sudo docker rm cook-maker
 sudo docker run -it -v $(pwd):/build --name cook-maker cook-maker
+sudo cp docker-compose.yml example/
+sudo cp frontend-Dockerfile.yml example/fronted/Dockerfile
+sudo cp api-Dockerfile.yml example/api/Dockerfile
+sudo cp .env example/

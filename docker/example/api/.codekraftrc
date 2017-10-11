@@ -1,0 +1,7 @@
+app_name		example
+app_redirect_url	http://www.example.com/callback
+app_key			13fc2e22-10d7-40df-805a-6e7277fa5675
+app_secret		065fdd56-4523-48c1-904f-ff8a3bb6bbfd
+base_token		1ae7d7ac-25b7-419c-8197-fee8b90802f6
+admin_mail		god@example.com
+admin_password		0c713244-29b4-4e6b-9712-516f7f2d0224
