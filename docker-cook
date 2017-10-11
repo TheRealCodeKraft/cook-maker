@@ -43,6 +43,11 @@ mv "$app_name" api
 $local_dir/react-frontend/docker-create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version
 mv "$app_name" frontend
 
+sudo cp $local_dir/docker/docker_compose.yml .
+sudo cp $local_dir/docker/frontend_Dockerfile frontend/Dockerfile
+sudo cp $local_dir/docker/api_Dockerfile api/Dockerfile
+sudo cp $local_dir/docker/.env .
+
 #cp .$local_dir/common/tmux.yaml .tmux.yaml
 #sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" .tmux.yaml
 #cp .$local_dir/common/launch .
