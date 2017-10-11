@@ -1,20 +1,20 @@
 app = Doorkeeper::Application.create! :name => 'example', 
                                       :redirect_uri => 'http://www.example.com/callback',
                                       scopes: '', 
-                                      uid: '13fc2e22-10d7-40df-805a-6e7277fa5675', 
-                                      secret: '065fdd56-4523-48c1-904f-ff8a3bb6bbfd'
+                                      uid: '49ebffad-37a8-4ee3-a044-faf175273db4', 
+                                      secret: '087b859f-6c46-4b35-9b89-c7c7d9af78ed'
 access_token = Doorkeeper::AccessToken.create!(:application_id => app.id, 
                                                expires_in: nil, 
                                                scopes: 'app')
-access_token.token = '1ae7d7ac-25b7-419c-8197-fee8b90802f6'
+access_token.token = '3f1d605b-3cf9-45d9-aee3-ad5f0b371676'
 access_token.save
 
 Codekraft::Api::Service::User.new.create({
   firstname: 'God',
   lastname: 'Admin',
   email: 'god@example.com',
-  password: '0c713244-29b4-4e6b-9712-516f7f2d0224',
-  password_confirm: '0c713244-29b4-4e6b-9712-516f7f2d0224',
+  password: 'f1264430-e18c-40a5-b3db-8581e22126c2',
+  password_confirm: 'f1264430-e18c-40a5-b3db-8581e22126c2',
   role: 'admin'
 })
 

@@ -1,0 +1,57 @@
+#!/bin/bash
+
+SOURCE=${BASH_SOURCE[0]}
+local_dir="$( dirname $SOURCE)"
+
+while getopts a:r:d:e:v: option
+do
+ case "${option}"
+ in
+ a) app_name=${OPTARG};;
+ r) repo=${OPTARG};;
+ d) description=${OPTARG};;
+ e) env_file_path=${OPTARG};;
+ v) lib_version=${OPTARG};;
+ esac
+done
+
+if [ -z "$app_name" ]; then
+  echo "Missing app name"
+  exit 0
+fi
+if [ -z "$repo" ]; then
+  echo "Missing app repo"
+  exit 0
+fi
+if [ -z "$description" ]; then
+  echo "Missing app description"
+  exit 0
+fi
+if [ -z "$lib_version" ]; then
+  echo "Missing library version"
+  exit 0
+fi
+
+set_in_package() {
+  search=$(echo $1 | sed 's/\//\\\//g')
+  replace=$(echo $2 | sed 's/\//\\\//g')
+  sed -i -e "s/\[\[$search\]\]/$replace/g" $app_name/package.json
+}
+
+# COPY THE SOURCE CODE
+cp -R $local_dir/sources $app_name
+
+# PREPARE PACKAGE FILE
+set_in_package "APP_NAME" "$app_name"
+set_in_package "URL_REPO" "$repo"
+set_in_package "AUTHOR" "CodeKraft"
+set_in_package "URL_ISSUES" "$repo/issues"
+set_in_package "HOME_PAGE" "$repo#readme"
+set_in_package "DESCRIPTION" "$description"
+set_in_package "LIB_VERSION" "$lib_version"
+
+# PREPARE DOTENV FILE
+echo $env_file_path
+if ! [ -z "$env_file_path" ]; then
+  cp $env_file_path $app_name/.env
+fi
