@@ -19,6 +19,11 @@ Then, you will need to update your system to provide all needed libraries to mak
     # init environment
     ./cook-maker/preheat
     
+### DOCKER
+
+    # Clone this repo
+    git clone git@github.com:TheRealCodeKraft/cook-maker
+    
 ### VAGRANT
 First, download the Vagrantfile located at : [VagrantFile](https://raw.githubusercontent.com/TheRealCodeKraft/cook-maker/master/vagrant/Vagrantfile)
 
@@ -37,13 +42,35 @@ Wait for installation (it take time !) and then go in box
 
 ## CREATE A SKELETON APPLICATION**
 
-### WORKING EXAMPLE
+### WITH DOCKER
+
+#### BASH SCRIPTS
+
+We provide a docker application creator. Just follow this pieces of treatment
+
+    # Launch cook maker
+    ./cook-maker/docker/cook -a <app_name>
+    
+#### HANDLY
+
+Or you can run these commands manually :
+
+    # Build the cook maker
+    sudo docker build -t cook-maker ./cook-maker/docker/ #--no-cache
+    # Remove previous cook maker
+    sudo docker rm cook-maker
+    # Cook a new app
+    sudo docker run -it -v $(pwd):/build -e name=<app_name> --name cook-maker cook-maker
+
+### VAGRANT OR LOCAL
+
+#### WORKING EXAMPLE
 You want nothing else to have an example application to see this bundle working, so : 
     
     # Cook an application named *example*
     ./cook-maker/cook-example
 
-### YOUR OWN BOOTSTRAP APP TO CUSTOMIZE
+#### YOUR OWN BOOTSTRAP APP TO CUSTOMIZE
 You want to give another name than 'example' to your project and some description
 
     # Cook an application with your preferences
