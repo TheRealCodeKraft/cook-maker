@@ -41,7 +41,7 @@ Wait for installation (it take time !) and then go in box
     # Connecting to box
     vssh
 
-## CREATE A SKELETON APPLICATION**
+## CREATE A SKELETON APPLICATION
 
 ### WITH DOCKER
 
