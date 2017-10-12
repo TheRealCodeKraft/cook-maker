@@ -4,8 +4,8 @@ services:
   postgres:
     image: 'postgres:9.6-alpine'
     environment:
-      POSTGRES_USER: 'example'
-      POSTGRES_PASSWORD: 'example'
+      POSTGRES_USER: '[[APP_NAME]]'
+      POSTGRES_PASSWORD: '[[APP_NAME]]'
     ports:
       - '5432:5432'
     volumes:

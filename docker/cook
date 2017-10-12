@@ -1,8 +1,16 @@
 #!/bin/bash
 
+while getopts a: option
+do
+ case "${option}"
+ in
+ a) app_name=${OPTARG};;
+ esac
+done
+
 SOURCE=${BASH_SOURCE[0]}
 local_dir="$( dirname $SOURCE)"
 
-sudo docker build -t cook-maker $local_dir
 sudo docker rm cook-maker
-sudo docker run -it -v $(pwd):/build --name cook-maker cook-maker
+sudo docker build -t cook-maker $local_dir #--no-cache
+sudo docker run -it -v $(pwd):/build -e name=paf --name cook-maker cook-maker
