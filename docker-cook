@@ -37,6 +37,9 @@ if [ -z "$repo" ]; then
   repo="https://github.com/TheRealCodeKraft"
 fi
 
+mkdir $app_name
+cd $app_name
+
 rails new $app_name -m $local_dir/ruby-api/docker-app_template.rb 
 mv "$app_name" api
 
@@ -47,6 +50,8 @@ cp $local_dir/docker/docker-compose.yml .
 cp $local_dir/docker/frontend_Dockerfile frontend/Dockerfile
 cp $local_dir/docker/api_Dockerfile api/Dockerfile
 cp $local_dir/docker/.env .
+
+cd ..
 
 #cp .$local_dir/common/tmux.yaml .tmux.yaml
 #sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" .tmux.yaml
