@@ -13,9 +13,10 @@ local_dir="$( dirname $SOURCE)"
 
 if [ -z "$app_name" ]; then
   echo -n "Missing application name : set it with -a option"
+  echo -e
   exit 1
 fi
 
-sudo docker rm cook-maker
-sudo docker build -t cook-maker $local_dir #--no-cache
-sudo docker run -it -v $(pwd):/build -e name=$app_name --name cook-maker-$app_name cook-maker
+docker rm cook-maker-$app_name
+docker build -t cook-maker $local_dir #--no-cache
+docker run -it -v $(pwd):/build -e name=$app_name --name cook-maker-$app_name cook-maker
