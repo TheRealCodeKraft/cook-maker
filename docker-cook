@@ -51,6 +51,8 @@ sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" docker-compose.yml
 cp $local_dir/docker/frontend_Dockerfile frontend/Dockerfile
 cp $local_dir/docker/api_Dockerfile api/Dockerfile
 cp $local_dir/docker/.env .
+cp $local_dir/docker/cook-build .
+cp $local_dir/docker/cook-up .
 cp $local_dir/docker/cook-db .
 cp $local_dir/docker/cook-seed .
 
