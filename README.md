@@ -25,6 +25,7 @@ Then, you will need to update your system to provide all needed libraries to mak
     git clone git@github.com:TheRealCodeKraft/cook-maker
     
 ### VAGRANT
+
 First, download the Vagrantfile located at : [VagrantFile](https://raw.githubusercontent.com/TheRealCodeKraft/cook-maker/master/vagrant/Vagrantfile)
 
     # Download Vagrantfile
