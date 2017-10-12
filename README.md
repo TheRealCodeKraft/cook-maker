@@ -1,91 +1,22 @@
 # CODEKRAFT COOK MAKER
 
-**CodeKraft Cook-maker** is a full ruby/react stack to provide an easy to install dev environment. It provides a **Ruby/Rails/Grape based API** and a **full React base Client**. 
+**CodeKraft Cook-maker** is a full ruby/react stack to provide an easy to install dev environment. It provides a **Ruby/Rails/Grape based API** and a **full React base Client**.
 
-## INSTALL
+## FEATURES
 
-### HANDMADE
-For a handmade installation, please consider you have access to a linux environment.
+The generated code provides base features such as : 
+* **User management** : features set of users management providing sign-in, sign-up, login, logout, forgot password functionnalities. 
+* **Heavy light CMS** : base content management system that could be overload as well. 
+* **A highly configurable architecture** : for developpers being able to focus on the features development.
 
-    # update the system
-    sudo apt-get update
-    # install minimal dependencies : Curl & Git
-    sudo apt-get -y install git curl
-    # clone cook-maker from CodeKraft repo
-    git clone git@github.com:TheRealCodeKraft/cook-maker
-    
-Then, you will need to update your system to provide all needed libraries to make CodeKraft environment working.
-    
-    # init environment
-    ./cook-maker/preheat
-    
-### DOCKER
+![Features](https://github.com/TheRealCodeKraft/cook-maker/raw/master/docs/images/features.png)
 
-    # Clone this repo
-    git clone git@github.com:TheRealCodeKraft/cook-maker
-    
-### VAGRANT
+## WHAT IT PRODUCES
 
-First, download the Vagrantfile located at : [VagrantFile](https://raw.githubusercontent.com/TheRealCodeKraft/cook-maker/master/vagrant/Vagrantfile)
+**Cook-maker** will provide a full-stack application composed by an API (Rails bases) and a frontend (React based) communicating all together. The data managment is based on a postgresql database.
 
-    # Download Vagrantfile
-    wget https://raw.githubusercontent.com/TheRealCodeKraft/cook-maker/master/vagrant/Vagrantfile
+![Light Architecture](https://github.com/TheRealCodeKraft/cook-maker/raw/master/docs/images/arch_light.png)
 
-Place it in the chosen directory and then launch :
+## HOW TO USE
 
-    # Launching vagramt machine
-    vagrant up
-    
-Wait for installation (it take time !) and then go in box
-
-    # Connecting to box
-    vssh
-
-## CREATE A SKELETON APPLICATION
-
-### WITH DOCKER
-
-#### BASH SCRIPTS
-
-We provide a docker application creator. Just follow this pieces of treatment
-
-    # Launch cook maker
-    ./cook-maker/docker/cook -a <app_name>
-
-#### HANDLY
-
-Or you can run these commands manually :
-
-    # Build the cook maker
-    sudo docker build -t cook-maker ./cook-maker/docker/ #--no-cache
-    # Remove previous cook maker
-    sudo docker rm cook-maker
-    # Cook a new app
-    sudo docker run -it -v $(pwd):/build -e name=<app_name> --name cook-maker cook-maker
-
-### VAGRANT OR LOCAL
-
-#### WORKING EXAMPLE
-You want nothing else to have an example application to see this bundle working, so : 
-    
-    # Cook an application named *example*
-    ./cook-maker/cook-example
-
-#### YOUR OWN BOOTSTRAP APP TO CUSTOMIZE
-You want to give another name than 'example' to your project and some description
-
-    # Cook an application with your preferences
-    ./cook-maker/cook -a <app_name> -d "<app_description>" -v <client_lib_version>
-    # where client_lib_version is the react frontend library version you want to use
-
-## DROP AN APPLICATION
-You have tested example and want to remove all files and data properly : 
-
-### EXAMPLE APP
-    # Drop the application named *example*
-    ./cook-maker/drop-example
-    
-### YOUR OWN APP
-
-    # Drop the application named with the parameter
-    ./cook-maker/drop -a <app_name>
+The much better approach to use the CodeKraft Cook-maker is to use the docker system. Just follow this link to get started : [Generate App With Docker](https://github.com/TheRealCodeKraft/cook-maker/wiki/Using-Docker)
