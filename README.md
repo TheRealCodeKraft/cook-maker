@@ -51,8 +51,8 @@ We provide a docker application creator. Just follow this pieces of treatment
 
     # Launch cook maker
     ./cook-maker/docker/cook -a <app_name>
-    
-#### HANDLY
+
+#### HANDLY
 
 Or you can run these commands manually :
 
