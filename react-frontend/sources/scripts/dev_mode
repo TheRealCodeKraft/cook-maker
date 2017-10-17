@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd /codekraft/lib
+npm link
+cd /app
+npm link codekraft-react-frontend
