@@ -1,3 +1,10 @@
 #!/bin/bash
 
+local_dir="$( dirname '$0')"
+
+if [ ! -d "/codekraft/lib/node_modules" ]; then
+  cd /codekraft/lib/
+  npm install
+  cd $local_dir
+fi
 docker-compose -f tools/docker-compose.yml run frontend /codekraft/lib/scripts/rebuild
