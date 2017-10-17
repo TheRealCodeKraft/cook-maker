@@ -4,12 +4,12 @@ services:
   postgres:
     image: 'postgres:9.6-alpine'
     environment:
-      POSTGRES_USER: '[[APP_NAME]]'
-      POSTGRES_PASSWORD: '[[APP_NAME]]'
+      POSTGRES_USER: 'example'
+      POSTGRES_PASSWORD: 'example'
     ports:
       - '5432:5432'
     volumes:
-      - './db/postgres:/var/lib/postgresql/data'
+      - '../db/postgres:/var/lib/postgresql/data'
 
   redis:
     image: 'redis:3.2-alpine'
@@ -17,31 +17,31 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - './db/redis:/data'
+      - '../db/redis:/data'
 
   api:
     depends_on:
       - 'postgres'
       - 'redis'
-    build: ./api/
+    build: ../api/
     ports:
       - '3000:3000'
     volumes:
-      - './api:/app'
-      - './codekraft-ruby-api:/codekraft/lib'
+      - '../api:/app'
+      - '../codekraft-ruby-api:/codekraft/lib'
     env_file:
       - '.env'
 
   frontend:
     depends_on:
       - 'api'
-    build: ./frontend/
+    build: ../frontend/
     ports: 
       - '3002:3002'
     volumes:
-      - './frontend:/app'
+      - '../frontend:/app'
       - /app/node_modules
-      - './codekraft-react-frontend:/codekraft/lib'
+      - '../codekraft-react-frontend:/codekraft/lib'
     env_file:
       - '.env'
 
