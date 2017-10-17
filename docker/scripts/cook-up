@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker-compose up -f tools/ -d
+docker-compose -f tools/docker-compose.yml up -d
