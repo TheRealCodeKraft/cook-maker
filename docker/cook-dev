@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker-compose run api "cd /app; bundle config local.codekraft-ruby-api /codekraft/lib"
+docker-compose run frontend "cd /codekraft/lib; npm link; cd /app; npm link codekraft-react-frontend" 
