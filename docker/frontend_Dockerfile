@@ -7,8 +7,7 @@ RUN curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/m
 RUN chmod +x /usr/local/bin/n
 RUN n stable
 
-RUN git clone git@github.com:TheRealCodeKraft/codekraft-react-frontend /codekraft-react-frontend
-WORKDIR /codekraft-react-frontend
+WORKDIR /lib
 RUN npm link
 
 RUN mkdir -p /app
