@@ -10,6 +10,7 @@ RUN n stable
 WORKDIR /lib
 RUN npm link
 
+RUN mkdir -p /lib
 RUN mkdir -p /app
 WORKDIR /app
 
