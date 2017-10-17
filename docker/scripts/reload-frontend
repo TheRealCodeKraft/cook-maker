@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker-compose -f tools/docker-compose.yml kill frontend
+docker-compose -f tools/docker-compose.yml up -d --no-deps frontend

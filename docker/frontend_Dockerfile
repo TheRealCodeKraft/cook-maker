@@ -15,4 +15,8 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 
+WORKDIR /codekraft/lib
+CMD ["npm", "link"]
+WORKDIR /app
+CMD ["npm", "link", "codekraft-react-frontend"]
 CMD ["npm", "start"]
