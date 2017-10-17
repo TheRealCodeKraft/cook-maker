@@ -8,6 +8,9 @@ RUN chmod +x /usr/local/bin/n
 RUN n stable
 
 RUN mkdir -p /codekraft/lib
+WORKDIR /codekraft/lib
+COPY ../codekraft-react-frontend/package.json ./
+RUN npm install
 
 RUN mkdir -p /app
 WORKDIR /app
