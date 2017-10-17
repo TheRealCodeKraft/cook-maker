@@ -1,0 +1,3 @@
+#!/bin/bash
+
+tail -f frontend/log/development.log
