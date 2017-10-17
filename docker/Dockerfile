@@ -14,6 +14,4 @@ RUN git clone https://github.com/TheRealCodeKraft/cook-maker.git
 RUN mkdir -p /build
 
 WORKDIR /build
-RUN git clone https://github.com/TheRealCodeKraft/codekraft-ruby-api
-RUN git clone https://github.com/TheRealCodeKraft/codekraft-react-frontend
 CMD ["/bin/sh", "-c", "../cook-maker/docker-cook -a ${name} -d \"Description of ${name}\" -v 1.0.34"]
