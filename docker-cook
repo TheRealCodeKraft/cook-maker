@@ -41,13 +41,17 @@ mkdir $app_name
 cd $app_name
 
 git clone https://github.com/TheRealCodeKraft/codekraft-ruby-api
+chmod +w codekraft-ruby-api
 git clone https://github.com/TheRealCodeKraft/codekraft-react-frontend
+chmod +w codekraft-react-frontend
 
 rails new $app_name -m $local_dir/ruby-api/docker-app_template.rb 
 mv "$app_name" api
+chmod +w api
 
 $local_dir/react-frontend/docker-create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version
 mv "$app_name" frontend
+chmod +w frontend
 
 cp $local_dir/docker/docker-compose.yml .
 sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" docker-compose.yml
