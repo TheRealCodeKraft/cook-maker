@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker-compose -f tools/docker-compose.yml run frontend /codekraft/lib/scripts/rebuild
