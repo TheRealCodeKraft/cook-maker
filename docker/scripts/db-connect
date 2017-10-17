@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker-compose run api psql postgres://[[APP_NAME]]:[[APP_NAME]]@postgres/[[APP_NAME]]
