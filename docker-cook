@@ -57,11 +57,7 @@ cp $local_dir/docker/.env .
 sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" .env
 
 mkdir -p scripts
-cp $local_dir/docker/cook-dev scripts/
-cp $local_dir/docker/cook-build scripts/
-cp $local_dir/docker/cook-up scripts/
-cp $local_dir/docker/cook-db scripts/
-cp $local_dir/docker/cook-seed scripts/
+cp -R $local_dir/docker/scripts .
 
 cd ..
 
