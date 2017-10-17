@@ -9,9 +9,11 @@ RUN n stable
 
 RUN mkdir -p /codekraft/lib
 WORKDIR /codekraft/lib
+RUN npm link
 
 RUN mkdir -p /app
 WORKDIR /app
+RUN npm link codekraft-react-frontend
 
 COPY package.json ./
 RUN npm install
