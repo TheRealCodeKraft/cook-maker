@@ -95,8 +95,13 @@ CLIENT_GRANT_TYPE=client_credentials
 CABLE_URL=http://localhost:3000/cable"
 end
 
-# MIGRATE AND SEED DATABASE
-#rake "db:migrate db:seed"
+create_file 'bin/dev_mode'
+append_to_file 'bin/dev_mode' do
+"#!/bin/bash
+cd /app
+bundle config local.codekraft-ruby-api /codekraft/lib"
+end
+run "chmod +x bin/dev_mode"
 
 # CREATE CODEKRAFT INITIALIZER
 gsub_file "config/initializers/codekraft.rb", "[[APP_NAME]]", "#{@app_name}"
