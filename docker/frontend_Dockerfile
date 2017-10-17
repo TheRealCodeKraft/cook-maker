@@ -7,10 +7,10 @@ RUN curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/m
 RUN chmod +x /usr/local/bin/n
 RUN n stable
 
+RUN mkdir -p /lib
 WORKDIR /lib
 RUN npm link
 
-RUN mkdir -p /lib
 RUN mkdir -p /app
 WORKDIR /app
 
