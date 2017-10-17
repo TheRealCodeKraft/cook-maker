@@ -15,4 +15,4 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 
-CMD ["npm", "start", "> log/development.log", "2>log/development.log"]
+CMD ["npm", "start"]
