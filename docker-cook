@@ -42,9 +42,14 @@ cd $app_name
 
 rails new $app_name -m $local_dir/ruby-api/docker-app_template.rb 
 mv "$app_name" api
+#git clone git@github.com:TheRealCodeKraft/codekraft-ruby-api
+#cd $app_name
+#bundle config
+
 
 $local_dir/react-frontend/docker-create -a $app_name -d "$description" -r $repo -e "api/.frontend.env" -v $lib_version
 mv "$app_name" frontend
+#git clone git@github.com:TheRealCodeKraft/codekraft-react-frontend
 
 cp $local_dir/docker/docker-compose.yml .
 sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" docker-compose.yml
