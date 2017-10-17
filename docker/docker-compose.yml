@@ -28,7 +28,6 @@ services:
       - '3000:3000'
     volumes:
       - './api:/app'
-      - './codekraft-ruby-api:/lib'
     env_file:
       - '.env'
 
@@ -41,7 +40,6 @@ services:
     volumes:
       - './frontend:/app'
       - /app/node_modules
-      - './codekraft-react-frontend:/lib'
     env_file:
       - '.env'
 

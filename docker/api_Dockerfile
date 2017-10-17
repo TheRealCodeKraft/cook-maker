@@ -10,13 +10,11 @@ RUN apt-get update && apt-get install -y \
   postgresql-contrib \
   libpq-dev
 
-#RUN mkdir -p /lib
 RUN mkdir -p /app
 WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler && bundle install --jobs 20 --retry 5
-#RUN bundle config local.codekraft-react-frontend /lib
 
 RUN curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n
 RUN chmod +x /usr/local/bin/n
