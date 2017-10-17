@@ -7,15 +7,13 @@ RUN curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/m
 RUN chmod +x /usr/local/bin/n
 RUN n stable
 
-RUN git clone https://github.com/TheRealCodeKraft/codekraft-react-frontend /lib
+RUN mkdir -p /lib
 WORKDIR /lib
-RUN npm link
 
 RUN mkdir -p /app
 WORKDIR /app
 
 COPY package.json ./
 RUN npm install
-RUN npm link codekraft-react-frontend
 
 CMD ["npm", "start"]
