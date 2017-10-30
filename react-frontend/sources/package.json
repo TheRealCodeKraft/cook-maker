@@ -82,7 +82,8 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "transit-immutable-js": "^0.7.0",
-    "transit-js": "^0.8.846"
+    "transit-js": "^0.8.846",
+    "heroku-ssl-redirect": "^0.0.4"
   },
   "description": "[[DESCRIPTION]]",
   "repository": {

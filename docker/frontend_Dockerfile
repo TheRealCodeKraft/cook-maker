@@ -7,16 +7,17 @@ RUN curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/m
 RUN chmod +x /usr/local/bin/n
 RUN n stable
 
-RUN mkdir -p /codekraft/lib
-
 RUN mkdir -p /app
 WORKDIR /app
 
 COPY package.json ./
 RUN npm install
 
+RUN mkdir -p /codekraft/lib
 WORKDIR /codekraft/lib
-CMD ["npm", "link"]
+ADD https://raw.githubusercontent.com/TheRealCodeKraft/codekraft-react-frontend/master/package.json ./
+RUN npm link
+
 WORKDIR /app
-CMD ["npm", "link", "codekraft-react-frontend"]
+RUN npm link codekraft-react-frontend
 CMD ["npm", "start"]
