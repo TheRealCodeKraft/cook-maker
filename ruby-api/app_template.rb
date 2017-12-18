@@ -78,7 +78,7 @@ gsub_file "db/seeds.rb", "[[ADMIN_PASS]]", "#{admin_pass}"
 
 append_to_file '.codekraftrc' do
 "app_name\t\t#{@app_name}
-app_redirect_url\thttp://www.#{@app_name}.com/callback
+app_redirect_url\thttps://www.#{@app_name}.com/callback
 app_key\t\t\t#{uid}
 app_secret\t\t#{secret}
 base_token\t\t#{token}

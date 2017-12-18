@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3001;
+const fs = require('fs')
 
 if (fs.existsSync(path.resolve('build/index.html'))) {
   var sslRedirect = require('heroku-ssl-redirect');

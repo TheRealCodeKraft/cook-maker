@@ -11,13 +11,12 @@ RUN apt-get update && apt-get install -y \
   libpq-dev
 
 RUN mkdir -p /codekraft/lib
-#ADD https://raw.githubusercontent.com/TheRealCodeKraft/codekraft-ruby-api/master/Gemfile ./
-#ADD https://raw.githubusercontent.com/TheRealCodeKraft/codekraft-ruby-api/master/codekraft-api.gemspec ./
 
 RUN mkdir -p /app
 WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
+RUN gem install mailcatcher
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 RUN bundle config local.codekraft-api /codekraft/lib
 
@@ -25,4 +24,4 @@ RUN curl -sSo /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/m
 RUN chmod +x /usr/local/bin/n
 RUN n stable
 
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["sh", "-c", "mailcatcher --ip=0.0.0.0 ; bundle exec rails server -b 0.0.0.0 > log/development.log 2> log/development.log & bundle exec rake schedule_and_work > log/jobs_development.log 2> log/jobs_development.log"]

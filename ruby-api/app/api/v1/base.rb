@@ -9,6 +9,8 @@ module V1
       helpers Doorkeeper::Grape::Helpers
       include Codekraft::Api::Endpoint
 
+      add_swagger_documentation api_version: "v1"
+
   end
 end
 
