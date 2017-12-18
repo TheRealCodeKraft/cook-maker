@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+  postgres:
+    image: 'postgres:9.6-alpine'
+    environment:
+      POSTGRES_USER: '[[APP_NAME]]'
+      POSTGRES_PASSWORD: '[[APP_NAME]]'
+    ports:
+      - '5432:5432'
+    volumes:
+      - '../db/postgres:/var/lib/postgresql/data'
+
+  redis:
+    image: 'redis:3.2-alpine'
+    command: redis-server
+    ports:
+      - '6379:6379'
+    volumes:
+      - '../db/redis:/data'
+
+  api:
+    depends_on:
+      - 'postgres'
+      - 'redis'
+    build: ../api/
+    ports:
+      - '3000:3000'
+    volumes:
+      - '../api:/app'
+      - '../codekraft-ruby-api:/codekraft/lib'
+    env_file:
+      - '.env'
+
+  frontend:
+    depends_on:
+      - 'api'
+    build: ../frontend/
+    ports: 
+      - '3002:3002'
+    volumes:
+      - '../frontend:/app'
+      - /app/node_modules
+      - '../codekraft-react-frontend:/codekraft/lib'
+    env_file:
+      - '.env'
+
+volumes:
+  redis:
+  postgres:

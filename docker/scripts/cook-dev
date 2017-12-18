@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker-compose -f tools/docker-compose.yml run api /app/bin/dev_mode
+docker-compose -f tools/docker-compose.yml -p [[APP_NAME]] run api /app/bin/dev_mode
 #docker-compose -f tools/docker-compose.yml run frontend /app/scripts/dev_mode

@@ -9,6 +9,9 @@ require 'grape-active_model_serializers'
 require 'grape-swagger-rails'
 require 'bcrypt'
 require 'colorize'
+require 'redis'
+require 'resque'
+require 'paperclip'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -29,7 +32,6 @@ module OblApi
             :post, :put, :delete, :options]
       end
     end
-    config.active_record.raise_in_transactional_callbacks = true
 
   end
 end

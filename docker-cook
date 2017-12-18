@@ -60,7 +60,7 @@ sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" tools/.env
 
 mkdir -p scripts
 cp -R $local_dir/docker/scripts/* tools/
-sed -i -e "s/\[\[APP_NAME\]\]/$app_name/g" tools/db-connect
+sed -i "s/\[\[APP_NAME\]\]/$app_name/g" tools/*
 
 cd ..
 
