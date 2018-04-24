@@ -49,6 +49,7 @@ end
 remove_file "app/views/layouts/mailer.html.erb"
 directory "app"
 gsub_file "app/views/layouts/mailer.html.erb", "[[APP_NAME]]", "#{@app_name}"
+gsub_file "config/environments/development.rb", "config.active_storage.service", "#config.active_storage.service"
 inject_into_file 'config/environments/development.rb', after: 'config.action_mailer.perform_caching = false' do <<-'RUBY'
 
   config.action_mailer.smtp_settings = {
