@@ -19,6 +19,7 @@ gem 'rails', '~> 5.0.5'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'jbuilder', '~> 2.5'
+gem 'bootsnap', require: false
 
 group :development do
   gem 'byebug', platform: :mri

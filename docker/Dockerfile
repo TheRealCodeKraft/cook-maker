@@ -14,4 +14,4 @@ RUN git clone https://github.com/TheRealCodeKraft/cook-maker.git
 RUN mkdir -p /build
 
 WORKDIR /build
-CMD ["/bin/sh", "-c", "../cook-maker/docker-cook -a ${name} -d \"Description of ${name}\" -v 1.0.34"]
+CMD ["/bin/sh", "-c", "../cook-maker/docker-cook -a ${name} -d \"Description of ${name}\" -v 1.1.17"]
