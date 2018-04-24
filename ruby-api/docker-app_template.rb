@@ -50,6 +50,7 @@ remove_file "app/views/layouts/mailer.html.erb"
 directory "app"
 gsub_file "app/views/layouts/mailer.html.erb", "[[APP_NAME]]", "#{@app_name}"
 gsub_file "config/environments/development.rb", "config.active_storage.service", "#config.active_storage.service"
+gsub_file "config/environments/development.rb", "config.active_record.verbose_query_logs", "#config.active_record.verbose_query_logs"
 inject_into_file 'config/environments/development.rb', after: 'config.action_mailer.perform_caching = false' do <<-'RUBY'
 
   config.action_mailer.smtp_settings = {
@@ -63,18 +64,32 @@ end
 generate "doorkeeper:migration"
 generate "migration", "create_user firstname:string lastname:string email:string encrypted_password:string salt:string role:string cgu:boolean timestamps:timestamps no_password:boolean stamp:string stamp_expiration:timestamp stamp_salt:string"
 generate "migration", "create_post type:string title:string slug:string payload:json user_id:integer author_name:string published_at:datetime uid:string timestamps:timestamps"
-generate "migration", "create_notification_desc key:string template:text mode:string, description:string, timestamps:timestamps"
+generate "migration", "create_notification_desc key:string template:text mode:string description:string timestamps:timestamps"
 generate "migration", "create_notification item_id:integer item_type:string parent_post_id:integer notification_desc_id:integer timestamps:timestamps sender_id:integer sender_type:string recipient_id:integer recipient_type:string read:boolean" 
-generate "migration", "create_attachment user_id:integer, parent_id:integer, parent_type:string, timestamps:timestamps"
-generate "migration", "create_metauris uri:string, metas:json, timestamps:timestamps"
+generate "migration", "create_attachment user_id:integer parent_id:integer parent_type:string timestamps:timestamps"
+generate "migration", "create_metauris uri:string metas:json timestamps:timestamps"
 generate "migration", "CreateJoinTableMetauriPost metauris posts"
 generate "migation", "create_hashtag desc:string timestamps:timestamps"
 generate "migration", "CreateJoinTablePostHashtag posts hashtags"
+generate "migration", "create_subscription user_id:integer notification_desc_id:integer mobile_push:boolean email_push:boolean timestamps:timestamps"
 
 uid = SecureRandom.uuid
 secret = SecureRandom.uuid
 token = SecureRandom.uuid
 admin_pass = SecureRandom.uuid
+
+# SETTING UP SECRETS FILE
+create_file "config/secrets.yml"
+dev_secret = SecureRandom.uuid
+test_secret = SecureRandom.uuid
+append_to_file "config/secrets.yml" do 
+"development:
+  secret_key_base: #{dev_secret}
+test:
+  secret_key_base: #{test_secret}
+production:
+  secret_key_base: <%= ENV['SECRET_KEY_BASE'] %>"
+end
 
 # GENERATING SEEDING SCRIPT
 remove_file 'db/seeds.rb'
@@ -84,6 +99,9 @@ gsub_file "db/seeds.rb", "[[SECRET]]", "#{secret}"
 gsub_file "db/seeds.rb", "[[UID]]", "#{uid}"
 gsub_file "db/seeds.rb", "[[TOKEN]]", "#{token}"
 gsub_file "db/seeds.rb", "[[ADMIN_PASS]]", "#{admin_pass}"
+
+# CREATING RESQUE CONFIG FILE
+directory "lib"
 
 append_to_file '.codekraftrc' do
 "app_name\t\t#{@app_name}
