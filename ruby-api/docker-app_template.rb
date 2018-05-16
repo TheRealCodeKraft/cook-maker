@@ -66,7 +66,7 @@ generate "migration", "create_user firstname:string lastname:string email:string
 generate "migration", "create_post type:string title:string slug:string payload:json user_id:integer author_name:string published_at:datetime uid:string timestamps:timestamps"
 generate "migration", "create_notification_desc key:string template:text mode:string description:string timestamps:timestamps"
 generate "migration", "create_notification item_id:integer item_type:string parent_post_id:integer notification_desc_id:integer timestamps:timestamps sender_id:integer sender_type:string recipient_id:integer recipient_type:string read:boolean" 
-generate "migration", "create_attachment user_id:integer parent_id:integer parent_type:string timestamps:timestamps"
+generate "migration", "create_attachment user_id:integer parent_id:integer parent_type:string timestamps:timestamps attachment:attachment"
 generate "migration", "create_metauris uri:string metas:json timestamps:timestamps"
 generate "migration", "CreateJoinTableMetauriPost metauris posts"
 generate "migation", "create_hashtag desc:string timestamps:timestamps"
